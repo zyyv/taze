@@ -277,7 +277,6 @@
   },
   "definitions": {
     "color": {
-      "description": "ANSI color name, hex color (#RGB or #RRGGBB), or false to disable this color.",
       "anyOf": [
         {
           "type": "string",
