@@ -118,6 +118,67 @@
       "description": "Run in interactive mode.",
       "default": false
     },
+    "colors": {
+      "type": "object",
+      "description": "Colors keyed by UI role. Omitted entries preserve the original appearance, with no focused row background by default.",
+      "additionalProperties": false,
+      "properties": {
+        "packageName": { "allOf": [{ "$ref": "#/definitions/color" }], "description": "Project/package name in the package header.", "default": "cyan" },
+        "catalogName": { "allOf": [{ "$ref": "#/definitions/color" }], "description": "Catalog name in a catalog header.", "default": "yellow" },
+        "dependencyName": { "allOf": [{ "$ref": "#/definitions/color" }], "description": "Name of a dependency selected for updating.", "default": false },
+        "dependencyAlias": { "allOf": [{ "$ref": "#/definitions/color" }], "description": "Alias prefix before a dependency name.", "default": false },
+        "dependencyGroup": { "allOf": [{ "$ref": "#/definitions/color" }], "description": "Dependency group heading, such as devDependencies.", "default": "blue" },
+        "dependencyType": { "allOf": [{ "$ref": "#/definitions/color" }], "description": "Dependency source abbreviation in ungrouped output.", "default": "gray" },
+        "dependencyUnselected": { "allOf": [{ "$ref": "#/definitions/color" }], "description": "Name and target version of an unchecked dependency.", "default": "gray" },
+        "packagePathMarker": { "allOf": [{ "$ref": "#/definitions/color" }], "description": "Marker before the file path of an unnamed package.", "default": "red" },
+        "packageManager": { "allOf": [{ "$ref": "#/definitions/color" }], "description": "Package manager name in a global package header.", "default": "red" },
+        "globalPackageInfo": { "allOf": [{ "$ref": "#/definitions/color" }], "description": "Global package label and installation path.", "default": "gray" },
+        "upToDate": { "allOf": [{ "$ref": "#/definitions/color" }], "description": "Up-to-date status shown inside a package.", "default": "gray" },
+        "versionCurrent": { "allOf": [{ "$ref": "#/definitions/color" }], "description": "Currently installed or declared version.", "default": "gray" },
+        "versionMajor": { "allOf": [{ "$ref": "#/definitions/color" }], "description": "Changed version digits and count for major updates.", "default": "red" },
+        "versionMinor": { "allOf": [{ "$ref": "#/definitions/color" }], "description": "Changed version digits and count for minor updates.", "default": "cyan" },
+        "versionPatch": { "allOf": [{ "$ref": "#/definitions/color" }], "description": "Changed version digits and count for patch updates.", "default": "green" },
+        "versionPin": { "allOf": [{ "$ref": "#/definitions/color" }], "description": "Pinned version or commit SHA and pin count.", "default": "blue" },
+        "versionError": { "allOf": [{ "$ref": "#/definitions/color" }], "description": "Version error count.", "default": "red" },
+        "versionRange": { "allOf": [{ "$ref": "#/definitions/color" }], "description": "Unchanged version range prefix, such as ^ or ~.", "default": "gray" },
+        "versionRangeChanged": { "allOf": [{ "$ref": "#/definitions/color" }], "description": "Changed version range prefix.", "default": "yellow" },
+        "versionAvailable": { "allOf": [{ "$ref": "#/definitions/color" }], "description": "Notice that a newer version is available.", "default": "magenta" },
+        "versionArrow": { "allOf": [{ "$ref": "#/definitions/color" }], "description": "Arrow between the current and target versions.", "default": "gray" },
+        "nodeCompatible": { "allOf": [{ "$ref": "#/definitions/color" }], "description": "Node.js version range when compatible.", "default": false },
+        "nodeIncompatible": { "allOf": [{ "$ref": "#/definitions/color" }], "description": "Node.js version range when incompatible.", "default": "red" },
+        "releaseAgeUnderHour": { "allOf": [{ "$ref": "#/definitions/color" }], "description": "Release age of less than one hour (<1h).", "default": "gray" },
+        "releaseAgeHours": { "allOf": [{ "$ref": "#/definitions/color" }], "description": "Release age shown in hours (1 to less than 100 hours).", "default": "green" },
+        "releaseAgeDays": { "allOf": [{ "$ref": "#/definitions/color" }], "description": "Release age shown in days (100 hours to less than 30 days).", "default": "green" },
+        "releaseAgeMonths": { "allOf": [{ "$ref": "#/definitions/color" }], "description": "Release age shown in months (30 to less than 365 days).", "default": "yellow" },
+        "releaseAgeYears": { "allOf": [{ "$ref": "#/definitions/color" }], "description": "Release age shown in years (365 days or more).", "default": "red" },
+        "interactivePointer": { "allOf": [{ "$ref": "#/definitions/color" }], "description": "Pointer identifying the focused row.", "default": "cyan" },
+        "interactiveChecked": { "allOf": [{ "$ref": "#/definitions/color" }], "description": "Checked dependency marker.", "default": "green" },
+        "interactiveUnchecked": { "allOf": [{ "$ref": "#/definitions/color" }], "description": "Unchecked dependency marker.", "default": "gray" },
+        "interactiveHint": { "allOf": [{ "$ref": "#/definitions/color" }], "description": "Keyboard help and version selection heading text.", "default": "gray" },
+        "interactiveKey": { "allOf": [{ "$ref": "#/definitions/color" }], "description": "Key names highlighted in keyboard help.", "default": "green" },
+        "interactiveBorder": { "allOf": [{ "$ref": "#/definitions/color" }], "description": "Vertical border beside interactive help and headings.", "default": "gray" },
+        "interactiveDependencyName": { "allOf": [{ "$ref": "#/definitions/color" }], "description": "Dependency name in the version selection heading.", "default": "green" },
+        "interactiveVersionName": { "allOf": [{ "$ref": "#/definitions/color" }], "description": "Unfocused version category or tag, such as minor or latest.", "default": "gray" },
+        "interactiveEndMarker": { "allOf": [{ "$ref": "#/definitions/color" }], "description": "End-of-list marker.", "default": "yellow" },
+        "interactiveSelectedBg": { "allOf": [{ "$ref": "#/definitions/color" }], "description": "Background of the focused dependency or version row; disabled by default.", "default": false },
+        "provenanceCurrent": { "allOf": [{ "$ref": "#/definitions/color" }], "description": "Current package provenance status.", "default": "green" },
+        "provenanceTarget": { "allOf": [{ "$ref": "#/definitions/color" }], "description": "Target package provenance status.", "default": "red" },
+        "provenanceArrow": { "allOf": [{ "$ref": "#/definitions/color" }], "description": "Arrow between current and target provenance statuses.", "default": "gray" },
+        "provenanceWarning": { "allOf": [{ "$ref": "#/definitions/color" }], "description": "Provenance downgrade warning message.", "default": "yellow" },
+        "provenanceWarningBg": { "allOf": [{ "$ref": "#/definitions/color" }], "description": "Background behind a dependency with downgraded provenance.", "default": "red" },
+        "messageSuccess": { "allOf": [{ "$ref": "#/definitions/color" }], "description": "Success and overall up-to-date messages.", "default": "green" },
+        "messageWarning": { "allOf": [{ "$ref": "#/definitions/color" }], "description": "Written-file and install reminder messages.", "default": "yellow" },
+        "messageError": { "allOf": [{ "$ref": "#/definitions/color" }], "description": "Dependency resolution errors and ERROR label.", "default": "red" },
+        "operationStatus": { "allOf": [{ "$ref": "#/definitions/color" }], "description": "Installing and updating status messages.", "default": "magenta" },
+        "hintCommand": { "allOf": [{ "$ref": "#/definitions/color" }], "description": "Command shown in a usage hint or installation reminder.", "default": "cyan" },
+        "hintArgument": { "allOf": [{ "$ref": "#/definitions/color" }], "description": "Flag or mode argument shown in a usage hint.", "default": "green" },
+        "promptMessage": { "allOf": [{ "$ref": "#/definitions/color" }], "description": "Write/install confirmation question.", "default": "green" },
+        "progressPackage": { "allOf": [{ "$ref": "#/definitions/color" }], "description": "Package progress bar label and package name.", "default": "cyan" },
+        "progressDependency": { "allOf": [{ "$ref": "#/definitions/color" }], "description": "Dependency progress bar label.", "default": "green" },
+        "progressName": { "allOf": [{ "$ref": "#/definitions/color" }], "description": "Dependency name displayed in progress bars.", "default": "gray" }
+      },
+      "default": {}
+    },
     "install": {
       "type": "boolean",
       "description": "Install dependencies after bumping.",
@@ -212,6 +273,19 @@
       "type": "boolean",
       "description": "Check and update the Node.js version declared in .node-version and .nvmrc files. Set to false to opt out.",
       "default": true
+    }
+  },
+  "definitions": {
+    "color": {
+      "description": "ANSI color name, hex color (#RGB or #RRGGBB), or false to disable this color.",
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": ["black", "red", "green", "yellow", "blue", "magenta", "cyan", "white", "gray", "redBright", "greenBright", "yellowBright", "blueBright", "magentaBright", "cyanBright", "whiteBright"]
+        },
+        { "type": "string", "pattern": "^#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6})$" },
+        { "const": false }
+      ]
     }
   }
 }

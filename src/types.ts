@@ -171,6 +171,120 @@ export interface ResolvedDepChange extends RawDep {
 
 export type LogLevel = 'debug' | 'info' | 'warn' | 'error' | 'silent'
 
+export type ColorValue
+  = | 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white' | 'gray'
+    | 'redBright' | 'greenBright' | 'yellowBright' | 'blueBright' | 'magentaBright' | 'cyanBright' | 'whiteBright'
+    | `#${string}` | false
+
+export interface ColorsOptions {
+  /** Project/package name in the package header. */
+  packageName?: ColorValue
+  /** Catalog name in a catalog header. */
+  catalogName?: ColorValue
+  /** Name of a dependency selected for updating. */
+  dependencyName?: ColorValue
+  /** Alias prefix before a dependency name. */
+  dependencyAlias?: ColorValue
+  /** Dependency group heading, such as devDependencies. */
+  dependencyGroup?: ColorValue
+  /** Dependency source abbreviation in ungrouped output. */
+  dependencyType?: ColorValue
+  /** Name and target version of an unchecked dependency. */
+  dependencyUnselected?: ColorValue
+  /** Marker before the file path of an unnamed package. */
+  packagePathMarker?: ColorValue
+  /** Package manager name in a global package header. */
+  packageManager?: ColorValue
+  /** Global package label and installation path. */
+  globalPackageInfo?: ColorValue
+  /** Up-to-date status shown inside a package. */
+  upToDate?: ColorValue
+  /** Currently installed or declared version. */
+  versionCurrent?: ColorValue
+  /** Changed version digits and count for major updates. */
+  versionMajor?: ColorValue
+  /** Changed version digits and count for minor updates. */
+  versionMinor?: ColorValue
+  /** Changed version digits and count for patch updates. */
+  versionPatch?: ColorValue
+  /** Pinned version or commit SHA and pin count. */
+  versionPin?: ColorValue
+  /** Version error count. */
+  versionError?: ColorValue
+  /** Unchanged version range prefix, such as ^ or ~. */
+  versionRange?: ColorValue
+  /** Changed version range prefix. */
+  versionRangeChanged?: ColorValue
+  /** Notice that a newer version is available. */
+  versionAvailable?: ColorValue
+  /** Arrow between the current and target versions. */
+  versionArrow?: ColorValue
+  /** Node.js version range when compatible. */
+  nodeCompatible?: ColorValue
+  /** Node.js version range when incompatible. */
+  nodeIncompatible?: ColorValue
+  /** Release age of less than one hour (<1h). */
+  releaseAgeUnderHour?: ColorValue
+  /** Release age shown in hours (1 to less than 100 hours). */
+  releaseAgeHours?: ColorValue
+  /** Release age shown in days (100 hours to less than 30 days). */
+  releaseAgeDays?: ColorValue
+  /** Release age shown in months (30 to less than 365 days). */
+  releaseAgeMonths?: ColorValue
+  /** Release age shown in years (365 days or more). */
+  releaseAgeYears?: ColorValue
+  /** Pointer identifying the focused row. */
+  interactivePointer?: ColorValue
+  /** Checked dependency marker. */
+  interactiveChecked?: ColorValue
+  /** Unchecked dependency marker. */
+  interactiveUnchecked?: ColorValue
+  /** Keyboard help and version selection heading text. */
+  interactiveHint?: ColorValue
+  /** Key names highlighted in keyboard help. */
+  interactiveKey?: ColorValue
+  /** Vertical border beside interactive help and headings. */
+  interactiveBorder?: ColorValue
+  /** Dependency name in the version selection heading. */
+  interactiveDependencyName?: ColorValue
+  /** Unfocused version category or tag, such as minor or latest. */
+  interactiveVersionName?: ColorValue
+  /** End-of-list marker. */
+  interactiveEndMarker?: ColorValue
+  /** Background of the focused dependency or version row; disabled by default. */
+  interactiveSelectedBg?: ColorValue
+  /** Current package provenance status. */
+  provenanceCurrent?: ColorValue
+  /** Target package provenance status. */
+  provenanceTarget?: ColorValue
+  /** Arrow between current and target provenance statuses. */
+  provenanceArrow?: ColorValue
+  /** Provenance downgrade warning message. */
+  provenanceWarning?: ColorValue
+  /** Background behind a dependency with downgraded provenance. */
+  provenanceWarningBg?: ColorValue
+  /** Success and overall up-to-date messages. */
+  messageSuccess?: ColorValue
+  /** Written-file and install reminder messages. */
+  messageWarning?: ColorValue
+  /** Dependency resolution errors and ERROR label. */
+  messageError?: ColorValue
+  /** Installing and updating status messages. */
+  operationStatus?: ColorValue
+  /** Command shown in a usage hint or installation reminder. */
+  hintCommand?: ColorValue
+  /** Flag or mode argument shown in a usage hint. */
+  hintArgument?: ColorValue
+  /** Write/install confirmation question. */
+  promptMessage?: ColorValue
+  /** Package progress bar label and package name. */
+  progressPackage?: ColorValue
+  /** Dependency progress bar label. */
+  progressDependency?: ColorValue
+  /** Dependency name displayed in progress bars. */
+  progressName?: ColorValue
+}
+
 export interface CommonOptions {
   cwd?: string
   recursive?: boolean
@@ -189,6 +303,12 @@ export interface CommonOptions {
   loglevel?: LogLevel
   failOnOutdated?: boolean
   silent?: boolean
+  /**
+   * Override colors by UI role with ANSI color names, hex colors (`#RGB` or
+   * `#RRGGBB`), or `false` to disable an individual color. Unspecified colors
+   * retain the original palette.
+   */
+  colors?: ColorsOptions
   /**
    * Fields in package.json to be checked
    * By default all fields will be checked
